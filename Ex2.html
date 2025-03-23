@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>PGCD</title>
+</head>
+<body>
+  <script>
+    function pgcd(a, b) {
+      while (b !== 0) {
+        let t = b;
+        b = a % b;
+        a = t;
+      }
+      return a;
+    }
+    let a = parseInt(prompt("Entrez le premier entier:"));
+    let b = parseInt(prompt("Entrez le deuxième entier:"));
+    document.write("<h2>PGCD:</h2> " + pgcd(a, b));
+  </script>
+</body>
+</html>

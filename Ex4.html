@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Opérations sur Matrices</title>
+</head>
+<body>
+  <script>
+    function additionMatrices(A, B) {
+      let n = A.length, C = [];
+      for (let i = 0; i < n; i++) {
+        C[i] = [];
+        for (let j = 0; j < n; j++) {
+          C[i][j] = A[i][j] + B[i][j];
+        }
+      }
+      return C;
+    }
+    function soustractionMatrices(A, B) {
+      let n = A.length, C = [];
+      for (let i = 0; i < n; i++) {
+        C[i] = [];
+        for (let j = 0; j < n; j++) {
+          C[i][j] = A[i][j] - B[i][j];
+        }
+      }
+      return C;
+    }
+    function multiplicationMatrices(A, B) {
+      let n = A.length, C = [];
+      for (let i = 0; i < n; i++) {
+        C[i] = [];
+        for (let j = 0; j < n; j++) {
+          C[i][j] = 0;
+          for (let k = 0; k < n; k++) {
+            C[i][j] += A[i][k] * B[k][j];
+          }
+        }
+      }
+      return C;
+    }
+    function transposeMatrix(A) {
+      let n = A.length, C = [];
+      for (let i = 0; i < n; i++) {
+        C[i] = [];
+        for (let j = 0; j < n; j++) {
+          C[i][j] = A[j][i];
+        }
+      }
+      return C;
+    }
+    let A = [[1, 2], [3, 4]];
+    let B = [[5, 6], [7, 8]];
+    let output = "";
+    output += "<h2>Addition:</h2> " + JSON.stringify(additionMatrices(A, B)) + "<br/><br/>";
+    output += "<h2>Soustraction:</h2> " + JSON.stringify(soustractionMatrices(A, B)) + "<br/><br/>";
+    output += "<h2>Multiplication:</h2> " + JSON.stringify(multiplicationMatrices(A, B)) + "<br/><br/>";
+    output += "<h2>Transposé de A:</h2> " + JSON.stringify(transposeMatrix(A));
+    document.write(output);
+  </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Formulaire d'Inscription</title>
+  <style>
+    table { border-collapse: collapse; }
+    td { padding: 5px; text-align: left; }
+    input, select { width: 100%; }
+  </style>
+</head>
+<body>
+  <form id="regForm">
+    <table>
+      <tr>
+        <td><label for="nom">Nom :</label></td>
+        <td><input type="text" id="nom" placeholder="Nom"></td>
+      </tr>
+      <tr>
+        <td><label for="prenom">Prénom :</label></td>
+        <td><input type="text" id="prenom" placeholder="Prénom"></td>
+      </tr>
+      <tr>
+        <td><label for="adresse">Adresse :</label></td>
+        <td><input type="text" id="adresse" placeholder="Adresse"></td>
+      </tr>
+      <tr>
+        <td><label for="email">Email :</label></td>
+        <td><input type="text" id="email" placeholder="Email"></td>
+      </tr>
+      <tr>
+        <td><label for="login">Login :</label></td>
+        <td><input type="text" id="login" placeholder="Login"></td>
+      </tr>
+      <tr>
+        <td><label for="password">Mot de passe :</label></td>
+        <td><input type="password" id="password" placeholder="Mot de passe"></td>
+      </tr>
+      <tr>
+        <td><label for="confirm">Confirmer mot de passe :</label></td>
+        <td><input type="password" id="confirm" placeholder="Confirmer mot de passe"></td>
+      </tr>
+      <tr>
+        <td><label for="telephone">Téléphone :</label></td>
+        <td><input type="text" id="telephone" placeholder="Téléphone"></td>
+      </tr>
+      <tr>
+        <td><label for="civilite">Civilité :</label></td>
+        <td>
+          <select id="civilite">
+            <option value="">Civilité</option>
+            <option value="M">M</option>
+            <option value="F">F</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="pays">Pays :</label></td>
+        <td>
+          <select id="pays">
+            <option value="">Pays</option>
+            <option value="France">France</option>
+            <option value="USA">USA</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="text-align:center;">
+          <input type="submit" value="S'inscrire">
+        </td>
+      </tr>
+    </table>
+  </form>
+  <script>
+    document.querySelector("#regForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      let nom = document.querySelector("#nom").value.trim();
+      let prenom = document.querySelector("#prenom").value.trim();
+      let adresse = document.querySelector("#adresse").value.trim();
+      let email = document.querySelector("#email").value.trim();
+      let login = document.querySelector("#login").value.trim();
+      let password = document.querySelector("#password").value;
+      let confirm = document.querySelector("#confirm").value;
+      let telephone = document.querySelector("#telephone").value.trim();
+      let civilite = document.querySelector("#civilite").value;
+      let pays = document.querySelector("#pays").value;
+      if (!nom || !prenom || !adresse || !email || !login || !password || !confirm || !telephone || !civilite || !pays) {
+        alert("Tous les champs sont obligatoires");
+        return;
+      }
+      let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert("Email invalide");
+        return;
+      }
+      // Telephone must start with "06" or "05" and be exactly 10 digits long
+      let telRegex = /^(06|05)[0-9]{8}$/;
+      if (!telRegex.test(telephone)) {
+        alert("Téléphone invalide. Il doit commencer par 06 ou 05 et comporter 10 chiffres.");
+        return;
+      }
+      if (password !== confirm) {
+        alert("Les mots de passe ne correspondent pas");
+        return;
+      }
+      alert("Formulaire valide");
+    });
+  </script>
+</body>
+</html>

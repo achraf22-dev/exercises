@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Carrousel d'Images</title>
+<style>
+#carousel{
+  display:flex;
+  align-items:center;
+  justify-content:center
+}
+#carousel img{
+  max-width:80%;
+  max-height:80vh
+}
+button{
+  font-size:2em;
+  background:none;
+  border:none;
+  cursor:pointer
+}
+</style>
+</head>
+<body>
+<div id="carousel">
+<button id="prev">&lt;</button>
+<img id="carouselImage" src="1.jpg" alt="Image">
+<button id="next">&gt;</button>
+</div>
+<script>
+let images=["1.jpg","2.jpg","3.jpg"]
+let index=0
+document.querySelector("#prev").addEventListener("click",function(){
+  index=(index-1+images.length)%images.length
+  document.querySelector("#carouselImage").src=images[index]
+})
+document.querySelector("#next").addEventListener("click",function(){
+  index=(index+1)%images.length
+  document.querySelector("#carouselImage").src=images[index]
+})
+</script>
+</body>
+</html>

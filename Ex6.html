@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculatrice Arithmétique</title>
+</head>
+<body>
+<div id="container">
+<input type="text" id="num1" value="0">
+<input type="text" id="num2" value="0">
+<div>
+<input type="radio" name="op" value="+" checked> +
+<input type="radio" name="op" value="-"> -
+<input type="radio" name="op" value="*"> *
+<input type="radio" name="op" value="/"> /
+</div>
+<input type="submit" id="calc" value="Calculer">
+<div id="result">Resultat: </div>
+</div>
+<script>
+document.querySelector("#calc").addEventListener("click",function(){
+  let a=parseFloat(document.querySelector("#num1").value)
+  let b=parseFloat(document.querySelector("#num2").value)
+  let op=document.querySelector('input[name="op"]:checked').value
+  let res=0
+  if(op==="+")res=a+b
+  else if(op==="-")res=a-b
+  else if(op==="*")res=a*b
+  else if(op==="/")res=b!==0?a/b:"Erreur"
+  document.querySelector("#result").innerHTML="Resultat: "+res
+})
+</script>
+</body>
+</html>
+

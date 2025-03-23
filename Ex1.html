@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Table de Multiplication</title>
+</head>
+<body>
+  <script>
+    function multiplicationTable(n) {
+      let result = "";
+      for (let i = 0; i <= 10; i++) {
+        result += n + " * " + i + " = " + (n * i) + "<br/>";
+      }
+      return result;
+    }
+    let value = parseInt(prompt("Entrez une valeur pour la table de multiplication:"));
+    document.write("<h2>Table de multiplication de " + value + " :</h2>");
+    document.write(multiplicationTable(value));
+  </script>
+</body>
+</html>
